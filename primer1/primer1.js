@@ -1,5 +1,6 @@
 function temperatureConversion(temperature, fromScale, toScale){
  const validScales = ["C", "F", "K", "c", "f", "k"]
+
     // Helper functions
     function toFahrenheit(C){
         let fahrenheit = (C * 9 / 5) + 32
@@ -35,10 +36,11 @@ function temperatureConversion(temperature, fromScale, toScale){
 //        - Convert the temperature to a number.
 //        - Normalise fromScale and toScale to uppercase.
 //        - Check if fromScale and toScale are valid ( e.g. 'C', 'F'). If not, throw an error "Invalid conversion type or input scale".
-
+    
     temperature = parseFloat(temperature);
+    
 
-    if (temperature == null | undefined | NaN) {
+    if (temperature == null | undefined | isNaN(temperature)) {
         throw new Error("Invalid temperature input")
     } else {
 
@@ -79,7 +81,9 @@ function temperatureConversion(temperature, fromScale, toScale){
     return temperature
 }
 
-
+let temperature = "abc"
+temperature = parseFloat(temperature);
+console.log(temperature)
 
 export default temperatureConversion;
 
