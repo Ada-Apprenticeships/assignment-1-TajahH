@@ -14,11 +14,21 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1){
 
     console.log(cardDeck)
 
+    if (numPlayers < 1 || cardsPerPlayer < 1 ){
+        throw new Error;
+    }
+
+    if (cardsPerPlayer > cardDeck.length){
+        throw new Error;
+        
+    }
+
+
     return 
 
 }
 
-shuffleAndDeal(2,1, 1)
+shuffleAndDeal(2, 1, 1)
 // TODO: Write a function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1)
 // that simulates shuffling and dealing a deck of cards.
 
