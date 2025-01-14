@@ -10,9 +10,13 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1){
     cardDeck.push(clubs);
     cardDeck.push(hearts);
     cardDeck.push(spades);
-    cardDeck.push(diamonds)
+    cardDeck.push(diamonds);
 
-    console.log(cardDeck)
+
+    if (numDecks == 2){
+        const repeat = (arr, n) => Array(n).fill(arr); 
+        cardDeck = repeat(cardDeck, numDecks)
+    }
 
     if (numPlayers < 1 || cardsPerPlayer < 1 ){
         throw new Error;
@@ -23,21 +27,21 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1){
         
     }
 
-
+console.log("double cards?" + cardDeck)
     return 
 
 }
 
-shuffleAndDeal(2, 1, 1)
+//shuffleAndDeal(8, 13, 2)
 // TODO: Write a function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1)
 // that simulates shuffling and dealing a deck of cards.
 
-// TODO: Create a standard 52-card deck (or 104 if numDecks is 2).
+// TODO: Create a standard 52-card deck (or 104 if numDecks is 2). Y
 
 // TODO: Implement input validation to handle invalid inputs:
-//       -  numPlayers should be a positive integer.
-//       -  cardsPerPlayer should be a positive integer.
-//       -  Throw an error if the requested cards exceed the deck size.
+//       -  numPlayers should be a positive integer. Y
+//       -  cardsPerPlayer should be a positive integer. Y
+//       -  Throw an error if the requested cards exceed the deck size. Y
 
 // TODO: Shuffle the deck using a suitable algorithm
 //       -  Consider time complexity and randomness.
