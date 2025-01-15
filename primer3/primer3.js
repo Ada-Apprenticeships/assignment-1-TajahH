@@ -6,7 +6,18 @@ function createLinkedList(posts) {
   // TODO: If any post has an invalid structure, throw an error
   // TODO: Create the linked list with the validated posts
   // TODO: Return the head of the linked list
+  if (posts.length > 0){
+    return null
+  } 
+  const head = { data: posts[0], next: null };
+  let current = head;
+  for (let i = 1; i < posts.length; i++) {
+    current.next = { data: posts[i], next: null };
+    current = current.next;
+  }
+  return head;
 }
+
 
 // TODO: Implement the searchSocialMediaFeed function
 function searchSocialMediaFeed(feed, keyword) {

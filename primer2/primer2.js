@@ -11,28 +11,53 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1){
     cardDeck.push(hearts);
     cardDeck.push(spades);
     cardDeck.push(diamonds);
+    cardDeck = cardDeck.flat()
 
 
     if (numDecks == 2){
-        const repeat = (arr, n) => Array(n).fill(arr); 
+        const repeat = (arr, n) => Array(n).fill(arr).flat(); 
         cardDeck = repeat(cardDeck, numDecks)
     }
 
     if (numPlayers < 1 || cardsPerPlayer < 1 ){
-        throw new Error;
+        throw new Error("Error");
     }
 
-    if (cardsPerPlayer > cardDeck.length){
-        throw new Error;
+    console.log(`numPlayers: ${numPlayers}, cardsPerPlayer: ${cardsPerPlayer}, cardDeck.length: ${cardDeck.length}`);
+
+    if (cardsPerPlayer * numPlayers > cardDeck.length){
+        throw new Error("not enough cards");
         
     }
 
-console.log("double cards?" + cardDeck)
+    const shuffle = (array) => { 
+        for (let i = array.length - 1; i > 0; i--) { 
+          const j = Math.floor(Math.random() * (i + 1)); 
+          [array[i], array[j]] = [array[j], array[i]]; 
+        } 
+        return array; 
+      };
+
+    const shuffledDeck = shuffle(cardDeck)
+    console.log(shuffledDeck)
+
+    const dealCards = (shuffledDeck) => {
+        let dealtCards = []
+        for (let i = shuffledDeck.length - 1; i > numPlayers; i--){
+            shuffledDeck.slice([i] )
+            dealtCards.push(shuffledDeck[i]) // double check this so i don't deal the same cards to each person.
+
+        }
+    }
+ 
+
     return 
 
 }
+// slicing the deck by the numOfPlayers and by the amount of cards per player
+//create a multi-dimensional array - each time you slice the hand for the player, you push that into a new array
 
-//shuffleAndDeal(8, 13, 2)
+//shuffleAndDeal(1, 52)
 // TODO: Write a function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1)
 // that simulates shuffling and dealing a deck of cards.
 
@@ -44,7 +69,7 @@ console.log("double cards?" + cardDeck)
 //       -  Throw an error if the requested cards exceed the deck size. Y
 
 // TODO: Shuffle the deck using a suitable algorithm
-//       -  Consider time complexity and randomness.
+//       -  Consider time complexity and randomness. Y
 
 // TODO: Deal cards to the specified number of players.
 
