@@ -23,33 +23,40 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1){
         throw new Error("Error");
     }
 
-    console.log(`numPlayers: ${numPlayers}, cardsPerPlayer: ${cardsPerPlayer}, cardDeck.length: ${cardDeck.length}`);
+    //console.log(`numPlayers: ${numPlayers}, cardsPerPlayer: ${cardsPerPlayer}, cardDeck.length: ${cardDeck.length}`);
 
     if (cardsPerPlayer * numPlayers > cardDeck.length){
         throw new Error("not enough cards");
-        
+
     }
 
-    const shuffle = (array) => { 
-        for (let i = array.length - 1; i > 0; i--) { 
+    const shuffle = (cardDeck) => { 
+        for (let i = cardDeck.length - 1; i > 0; i--) { 
           const j = Math.floor(Math.random() * (i + 1)); 
-          [array[i], array[j]] = [array[j], array[i]]; 
+          [cardDeck[i], cardDeck[j]] = [cardDeck[j], cardDeck[i]]; 
         } 
-        return array; 
+        return cardDeck; 
       };
 
-    const shuffledDeck = shuffle(cardDeck)
-    console.log(shuffledDeck)
+    //let shuffledDeck = shuffle(cardDeck);
+    //console.log(shuffledDeck)
 
-    const dealCards = (shuffledDeck) => {
+    const dealCards = () => {
         let dealtCards = []
-        for (let i = shuffledDeck.length - 1; i > numPlayers; i--){
-            shuffledDeck.slice([i] )
-            dealtCards.push(shuffledDeck[i]) // double check this so i don't deal the same cards to each person.
+        let start = 0;
+        let end = 0;
+        for (let i = 0; i < cardsPerPlayer; i++ ){
+            // shuffledDeck.slice(0, cardsPerPlayer )
+            start = start + cardsPerPlayer;
+            end = start + cardsPerPlayer
+            dealtCards.push(cardDeck.slice(start, end)) 
 
         }
+    console.log(dealcards(shuffle(cardDeck)))
+    console.log(start, end)
+    return dealtCards
+
     }
- 
 
     return 
 
