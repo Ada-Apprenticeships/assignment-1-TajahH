@@ -18,6 +18,7 @@ function createLinkedList(posts) {
   return head;
 }
 
+//TODO (could use Tries?: https://learnersbucket.com/tutorials/data-structures/trie-data-structure-in-javascript/)
 
 // TODO: Implement the searchSocialMediaFeed function
 function searchSocialMediaFeed(feed, keyword) {
