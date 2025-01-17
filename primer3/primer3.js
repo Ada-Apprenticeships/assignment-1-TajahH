@@ -1,12 +1,12 @@
 // TODO: Implement the createLinkedList function
 function createLinkedList(posts) {
-  // TODO: Check if the input 'posts' is valid (an array with at least one element)
+  // TODO: Check if the input 'posts' is valid (an array with at least one element) Y
   // TODO: Iterate through each post in the 'posts' array
   // TODO: Validate the structure of each post (ensure it has 'text', 'timestamp', and 'author' properties with correct types and values)
   // TODO: If any post has an invalid structure, throw an error
   // TODO: Create the linked list with the validated posts
   // TODO: Return the head of the linked list
-  if (posts.length > 0){
+  if (posts.length < 0){
     return null
   } 
   const head = { data: posts[0], next: null };
