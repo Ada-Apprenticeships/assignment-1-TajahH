@@ -1,8 +1,8 @@
 // TODO: Implement the createLinkedList function
 function createLinkedList(posts) {
-  // TODO: Check if the input 'posts' is valid (an array with at least one element) Y
-  // TODO: Iterate through each post in the 'posts' array
-  // TODO: Validate the structure of each post (ensure it has 'text', 'timestamp', and 'author' properties with correct types and values)
+  // TODO: Check if the input 'posts' is valid (an array with at least one element) - Y
+  // TODO: Iterate through each post in the 'posts' array - Y
+  // TODO: Validate the structure of each post (ensure it has 'text', 'timestamp', and 'author' properties with correct types and values) - Y
   // TODO: If any post has an invalid structure, throw an error
   // TODO: Create the linked list with the validated posts
   // TODO: Return the head of the linked list
@@ -56,5 +56,13 @@ function searchSocialMediaFeed(feed, keyword) {
 
 // ADDITIONAL TODO - The suggested functions above can be refactored into multiple functions if you think appropriate.
 
-createLinkedList({ text: 'Valid post', timestamp: '2024-03-11 10:00:00' })
+console.log(createLinkedList([   { text: 'Hello world!', timestamp: '2024-03-11 10:00:00', author: 'Alice' },
+  { text: 'Having a great day!', timestamp: '2024-03-11 11:30:00', author: 'Bob' },
+  { text: 'Just finished a fantastic game.', timestamp: '2024-03-11 12:15:00', author: 'Aqil' },
+  { text: 'Another great post!', timestamp: '2024-03-11 13:00:00', author: 'Diana' }]))
+
+createLinkedList([{
+  text: 'Hello world!',
+  timestamp: '2024-03-11 10:00:00',
+}])
 export {createLinkedList, searchSocialMediaFeed};
