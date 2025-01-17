@@ -14,7 +14,7 @@ function createLinkedList(posts) {
       this.author = author;
     }
     static checkValidObjects(posts){
-      return posts.text && posts.timestamp && posts.author;
+      return posts.text && !isNaN(new Date (posts.timestamp)) && posts.author;
     }
   }
 
@@ -61,8 +61,8 @@ console.log(createLinkedList([   { text: 'Hello world!', timestamp: '2024-03-11 
   { text: 'Just finished a fantastic game.', timestamp: '2024-03-11 12:15:00', author: 'Aqil' },
   { text: 'Another great post!', timestamp: '2024-03-11 13:00:00', author: 'Diana' }]))
 
-createLinkedList([{
-  text: 'Hello world!',
-  timestamp: '2024-03-11 10:00:00',
-}])
+// createLinkedList([{
+//   text: 'Hello world!',
+//   timestamp: '2024-03-11 10:00:00',
+// }])
 export {createLinkedList, searchSocialMediaFeed};
