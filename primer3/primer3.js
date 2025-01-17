@@ -3,9 +3,11 @@ function createLinkedList(posts) {
   // TODO: Check if the input 'posts' is valid (an array with at least one element) - Y
   // TODO: Iterate through each post in the 'posts' array - Y
   // TODO: Validate the structure of each post (ensure it has 'text', 'timestamp', and 'author' properties with correct types and values) - Y
-  // TODO: If any post has an invalid structure, throw an error
+  // TODO: If any post has an invalid structure, throw an error - Y
   // TODO: Create the linked list with the validated posts
   // TODO: Return the head of the linked list
+
+  
   
   class validObjects{
     constructor(text, timestamp, author){
@@ -18,13 +20,17 @@ function createLinkedList(posts) {
     }
   }
 
+  if (posts.length === 0){
+    return null;
+  }
+
   if (posts.length < 0 && !Array.isArray(posts)){
-    throw new Error("Invalid Post.")
+    throw new Error("Invalid Post.");
  } 
 
   for (let i = 0; i < posts.length; i++ ){
     if(!validObjects.checkValidObjects(posts[i])){
-      throw new Error("Invalid structure of post.")
+      throw new Error("Invalid structure of post.");
     }
 
   }
