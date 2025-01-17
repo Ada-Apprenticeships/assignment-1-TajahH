@@ -6,7 +6,7 @@ function createLinkedList(posts) {
   // TODO: If any post has an invalid structure, throw an error
   // TODO: Create the linked list with the validated posts
   // TODO: Return the head of the linked list
-  if (posts.length < 0){
+  if (posts.length < 0 && !Array.isArray(posts)){
     return null
   } 
   const head = { data: posts[0], next: null };
@@ -18,7 +18,7 @@ function createLinkedList(posts) {
   return head;
 }
 
-//TODO (could use Tries?: https://learnersbucket.com/tutorials/data-structures/trie-data-structure-in-javascript/)
+
 
 // TODO: Implement the searchSocialMediaFeed function
 function searchSocialMediaFeed(feed, keyword) {
