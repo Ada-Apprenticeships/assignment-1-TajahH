@@ -6,9 +6,29 @@ function createLinkedList(posts) {
   // TODO: If any post has an invalid structure, throw an error
   // TODO: Create the linked list with the validated posts
   // TODO: Return the head of the linked list
+  
+  class validObjects{
+    constructor(text, timestamp, author){
+      this.text = text;
+      this.timestamp = timestamp;
+      this.author = author;
+    }
+    static checkValidObjects(posts){
+      return posts.text && posts.timestamp && posts.author;
+    }
+  }
+
   if (posts.length < 0 && !Array.isArray(posts)){
-    return null
-  } 
+    throw new Error("Invalid Post.")
+ } 
+
+  for (let i = 0; i < posts.length; i++ ){
+    if(!validObjects.checkValidObjects(posts[i])){
+      throw new Error("Invalid structure of post.")
+    }
+
+  }
+
   const head = { data: posts[0], next: null };
   let current = head;
   for (let i = 1; i < posts.length; i++) {
@@ -36,5 +56,5 @@ function searchSocialMediaFeed(feed, keyword) {
 
 // ADDITIONAL TODO - The suggested functions above can be refactored into multiple functions if you think appropriate.
 
-
+createLinkedList({ text: 'Valid post', timestamp: '2024-03-11 10:00:00' })
 export {createLinkedList, searchSocialMediaFeed};
