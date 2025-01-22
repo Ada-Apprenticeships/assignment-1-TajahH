@@ -4,7 +4,7 @@ const spades = ["Ace of Spades", "2 of Spades", "3 of Spades", "4 of Spades", "5
 const diamonds = ["Ace of Diamonds", "2 of Diamonds", "3 of Diamonds", "4 of Diamonds", "5 of Diamonds", "6 of Diamonds", "7 of Diamonds", "8 of Diamonds", "9 of Diamonds", "10 of Diamonds", "Jack of Diamonds", "Queen of Diamonds", "King of Diamonds"]
 
 
-function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1){
+function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks){
 
     let cardDeck = [];
     cardDeck.push(clubs);
@@ -14,7 +14,7 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1){
     cardDeck = cardDeck.flat()
 
 
-    if (numDecks == 2){
+    if (numDecks === 2){
         const repeat = (arr, n) => Array(n).fill(arr).flat(); 
         cardDeck = repeat(cardDeck, numDecks)
     }
@@ -26,45 +26,45 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1){
     //console.log(`numPlayers: ${numPlayers}, cardsPerPlayer: ${cardsPerPlayer}, cardDeck.length: ${cardDeck.length}`);
 
     if (cardsPerPlayer * numPlayers > cardDeck.length){
-        throw new Error("not enough cards");
+        throw new Error("Not enough cards");
 
     }
-
-    const shuffle = (cardDeck) => { 
-        for (let i = cardDeck.length - 1; i > 0; i--) { 
+    //fisher-yates algorithm
+    const shuffle = (cards) => { 
+        for (let i = cards.length - 1; i > 0; i--) { 
           const j = Math.floor(Math.random() * (i + 1)); 
-          [cardDeck[i], cardDeck[j]] = [cardDeck[j], cardDeck[i]]; 
+          [cards[i], cards[j]] = [cards[j], cards[i]]; 
         } 
-        return cardDeck; 
+        return cards; 
       };
 
-    //let shuffledDeck = shuffle(cardDeck);
+    let shuffledDeck = shuffle(cardDeck);
     //console.log(shuffledDeck)
 
-    const dealCards = () => {
+    let dealCards = (deck) => {
         let dealtCards = []
         let start = 0;
         let end = 0;
-        for (let i = 0; i < cardsPerPlayer; i++ ){
-            // shuffledDeck.slice(0, cardsPerPlayer )
+        let hand = 1;
+        dealtCards.push(deck.slice(start, cardsPerPlayer ))
+        for (let i = 0; i < cardsPerPlayer && hand < numPlayers; i++ ){
             start = start + cardsPerPlayer;
             end = start + cardsPerPlayer
-            dealtCards.push(cardDeck.slice(start, end)) 
-
+            dealtCards.push(deck.slice(start, end)) 
+            hand++
         }
-    console.log(dealcards(shuffle(cardDeck)))
-    console.log(start, end)
+    //console.log(start, end)
+    //console.log(dealtCards)
     return dealtCards
 
-    }
-
-    return 
-
+    } 
+    return dealCards(shuffledDeck)
+ 
 }
 // slicing the deck by the numOfPlayers and by the amount of cards per player
 //create a multi-dimensional array - each time you slice the hand for the player, you push that into a new array
-
-//shuffleAndDeal(1, 52)
+//console.log(shuffleAndDeal(2,5))
+shuffleAndDeal(4, 5)
 // TODO: Write a function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1)
 // that simulates shuffling and dealing a deck of cards.
 

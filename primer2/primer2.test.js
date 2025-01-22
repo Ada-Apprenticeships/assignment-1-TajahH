@@ -7,6 +7,7 @@ describe('Card Shuffler', () => {
       const cardsPerHand = 5;
       const result = shuffleAndDeal(numPlayers, cardsPerHand);
       
+      
       expect(result).toHaveLength(numPlayers);
       result.forEach(hand => {
         expect(hand).toHaveLength(cardsPerHand);
