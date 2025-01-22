@@ -44,10 +44,10 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks){
     let dealCards = (deck) => {
         let dealtCards = []
         let start = 0;
-        let end = 0;
+        let end = cardsPerPlayer;
         let hand = 1;
         dealtCards.push(deck.slice(start, cardsPerPlayer ))
-        for (let i = 0; i < cardsPerPlayer && hand < numPlayers; i++ ){
+        for (let i = 0; hand < numPlayers; i++ ){
             start = start + cardsPerPlayer;
             end = start + cardsPerPlayer
             dealtCards.push(deck.slice(start, end)) 
@@ -64,7 +64,7 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks){
 // slicing the deck by the numOfPlayers and by the amount of cards per player
 //create a multi-dimensional array - each time you slice the hand for the player, you push that into a new array
 //console.log(shuffleAndDeal(2,5))
-shuffleAndDeal(4, 5)
+shuffleAndDeal(52, 1)
 // TODO: Write a function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1)
 // that simulates shuffling and dealing a deck of cards.
 
