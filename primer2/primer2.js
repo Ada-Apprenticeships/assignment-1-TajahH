@@ -23,8 +23,7 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks){
         throw new Error("Error");
     }
 
-    //console.log(`numPlayers: ${numPlayers}, cardsPerPlayer: ${cardsPerPlayer}, cardDeck.length: ${cardDeck.length}`);
-
+    
     if (cardsPerPlayer * numPlayers > cardDeck.length){
         throw new Error("Not enough cards");
 
@@ -39,7 +38,6 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks){
       };
 
     let shuffledDeck = shuffle(cardDeck);
-    //console.log(shuffledDeck)
 
     let dealCards = (deck) => {
         let dealtCards = []
@@ -53,17 +51,13 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks){
             dealtCards.push(deck.slice(start, end)) 
             hand++
         }
-    //console.log(start, end)
-    //console.log(dealtCards)
     return dealtCards
 
     } 
     return dealCards(shuffledDeck)
  
 }
-// slicing the deck by the numOfPlayers and by the amount of cards per player
-//create a multi-dimensional array - each time you slice the hand for the player, you push that into a new array
-//console.log(shuffleAndDeal(2,5))
+
 shuffleAndDeal(52, 1)
 // TODO: Write a function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1)
 // that simulates shuffling and dealing a deck of cards.
