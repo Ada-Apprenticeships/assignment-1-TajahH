@@ -45,43 +45,24 @@ function createLinkedList(posts) {
 
 // TODO: Implement the searchSocialMediaFeed function
 function searchSocialMediaFeed(feed, keyword) {
-  // TODO: Handle the case where the feed is empty
-  // TODO: Initialise an empty array to store the search results - Y
-  // TODO: Normalise the keyword for case-insensitive search
-  // TODO: Split the keyword into individual words
-  // TODO: Traverse the linked list
-  // TODO: Normalise the text of the current post for case-insensitive search
-  // TODO: Split the text of the current post into individual words
-  // TODO: Check if any keyword word is partially present in any text word
-  // TODO: If there's a partial match, add the current post to the results
-  // TODO: Return the array of search results
+
   let searchResults = [];
 
-  if (feed.length == 0){
-    return [];
+  let currentNode = feed;
+  let normalisedKeyword = keyword.toLowerCase()
+ 
+  while (currentNode != null){
+    if ( currentNode.data.text.includes(normalisedKeyword)) {
+      searchResults.push(currentNode.data);
   }
-  let current = head;
-  while (current != null){
-    if(feed.includes(keyword)){
-      searchResults.push(current)
-    }
-  }
-
-
-
-
-
+  currentNode = currentNode.next;
 }
+
+return searchResults.length > 0 ? searchResults : [];
+}
+
+
 
 // ADDITIONAL TODO - The suggested functions above can be refactored into multiple functions if you think appropriate.
 
-// console.log(createLinkedList([   { text: 'Hello world!', timestamp: '2024-03-11 10:00:00', author: 'Alice' },
-//   { text: 'Having a great day!', timestamp: '2024-03-11 11:30:00', author: 'Bob' },
-//   { text: 'Just finished a fantastic game.', timestamp: '2024-03-11 12:15:00', author: 'Aqil' },
-//   { text: 'Another great post!', timestamp: '2024-03-11 13:00:00', author: 'Diana' }]))
-
-// createLinkedList([{
-//   text: 'Hello world!',
-//   timestamp: '2024-03-11 10:00:00',
-// }])
 export {createLinkedList, searchSocialMediaFeed};
