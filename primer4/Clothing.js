@@ -2,9 +2,9 @@ import Product from "./Product";
 
 export class Clothing extends Product {
 
-    constructor(id, name, price, quantity){
+    constructor(id, name, price, quantity, size, material){
         super(id, name, price, quantity);
-        this.size = this.size;
+        this.size = size;
         this.material = material
         
     }
@@ -20,12 +20,12 @@ export class Clothing extends Product {
         }
     }
 
-    size(){
+    getSize(){
         return this.size;
 
     }
 
-    material(){
+    getMaterial(){
         return this.material
     }
 }

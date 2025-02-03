@@ -2,6 +2,7 @@
 import Product from './Product.js';
 import Inventory from './Inventory.js';
 import { Electronics } from './Electronics.js';
+import { Clothing } from './Clothing.js';
 
 describe('Inventory', () => {
   let inventory;
@@ -9,8 +10,8 @@ describe('Inventory', () => {
 
   beforeEach(() => {
     inventory = new Inventory();
-    product1 = new Product("A123", "T-shirt", 19.99, 100);
-    product2 = new Product("B456", "Jeans", 49.99, 50);
+    product1 = new Clothing("A123", "T-shirt", 19.99, 100, "Medium", "100% Linen");
+    product2 = new Clothing("B456", "Jeans", 49.99, 50, "XL", "100% Denim" );
     product3 = new Electronics("C123", "Laptop", 999.99, 3, "Apple Mac", "2 years free warranty");
   });
 
@@ -18,7 +19,7 @@ describe('Inventory', () => {
     test('can add products to the inventory', () => {
       inventory.addProduct(product1);
       inventory.addProduct(product2);
-      inventory.addProduct(product3)
+      inventory.addProduct(product3);
       expect(inventory.getNumOfItems()).toBe(3);
     });
 
@@ -27,6 +28,15 @@ describe('Inventory', () => {
       expect(() => inventory.addProduct(product1)).toThrowError(`Product with ID ${product1.id} already exists.`);
     });
   });
+
+  describe('New products cannot be instantiated while product is an abstract class', () => {
+    test('an error is thrown when a new product is declared without Clothing or Electronics', () => {
+      let product4;
+      expect(() => {
+        product4 = new Product("T234", "Desk", 25.45, 10);
+    }).toThrowError("Cannot instantiate an abstract class");
+  });
+})
 
   describe('Updating Product Quantities', () => {
     test('can update the quantity of a product', () => {
@@ -64,14 +74,18 @@ describe('Inventory', () => {
             id: "A123",
             name: "T-shirt",
             price: 19.99,
-            quantity: 100
+            quantity: 100,
+            size: "Medium",
+            material: "100% Linen"
         });
 
         expect(inventory.getProduct("B456")).toEqual({
             id: "B456",
             name: "Jeans",
             price: 49.99,
-            quantity: 50
+            quantity: 50,
+            size: "XL",
+            material: "100% Denim"
         });
 
         expect(inventory.getProduct("C123")).toEqual({
