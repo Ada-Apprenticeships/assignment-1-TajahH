@@ -2,7 +2,7 @@ import Product from "./Product";
 
 export class Electronics extends Product {
 
-    constructor(id, name, price, quantity){
+    constructor(id, name, price, quantity, brand, warranty){
         super(id, name, price, quantity);
         this.brand = brand;
         this.warranty = warranty;
@@ -19,11 +19,11 @@ export class Electronics extends Product {
         }
     }
 
-    brand(){
+   getBrand(){
         return this.brand;
     }
 
-    warranty(){
+    getWarranty(){
         return this.warranty;
     }
 }

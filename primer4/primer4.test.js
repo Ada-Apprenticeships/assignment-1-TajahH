@@ -1,22 +1,25 @@
 // Import the necessary modules
 import Product from './Product.js';
 import Inventory from './Inventory.js';
+import { Electronics } from './Electronics.js';
 
 describe('Inventory', () => {
   let inventory;
-  let product1, product2;
+  let product1, product2, product3;
 
   beforeEach(() => {
     inventory = new Inventory();
     product1 = new Product("A123", "T-shirt", 19.99, 100);
     product2 = new Product("B456", "Jeans", 49.99, 50);
+    product3 = new Electronics("C123", "Laptop", 999.99, 3, "Apple Mac", "2 years free warranty");
   });
 
   describe('Adding Products', () => {
     test('can add products to the inventory', () => {
       inventory.addProduct(product1);
       inventory.addProduct(product2);
-      expect(inventory.getNumOfItems()).toBe(2);
+      inventory.addProduct(product3)
+      expect(inventory.getNumOfItems()).toBe(3);
     });
 
     test('throws error when adding a product with a duplicate ID', () => {
@@ -55,6 +58,7 @@ describe('Inventory', () => {
     test('can retrieve the details of products', () => {
         inventory.addProduct(product1);
         inventory.addProduct(product2);
+        inventory.addProduct(product3)
         
         expect(inventory.getProduct("A123")).toEqual({
             id: "A123",
@@ -69,6 +73,16 @@ describe('Inventory', () => {
             price: 49.99,
             quantity: 50
         });
+
+        expect(inventory.getProduct("C123")).toEqual({
+          id: "C123",
+          name: "Laptop",
+          price: 999.99,
+          quantity: 3,
+          brand: "Apple Mac",
+          warranty: "2 years free warranty"
+      });
+
     });
   });
 });
