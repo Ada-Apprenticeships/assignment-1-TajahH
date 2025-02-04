@@ -1,13 +1,13 @@
 function temperatureConversion(temperature, fromScale, toScale){
- const validScales = ["C", "F", "K", "c", "f", "k"];
+ const validScales = ["C", "F", "K"];
 
     // Helper functions
-    function toFahrenheit(C){
+    function cToFahrenheit(C){
         let fahrenheit = (C * 9 / 5) + 32
         return fahrenheit; 
     }    
     
-    function toCelsius(F){
+    function fToCelsius(F){
         let celsius = (F - 32) * 5 / 9
         return celsius;
     }
@@ -45,9 +45,9 @@ temperature = parseFloat(temperature);
     if (!validScales.includes(fromScale) || !validScales.includes(toScale)){
         throw new Error("Invalid conversion type or input scale")
     } else if (fromScale == "C" && toScale == "F"){
-       temperature = toFahrenheit(temperature);
+       temperature = cToFahrenheit(temperature);
     } else if (fromScale == "F" && toScale == "C"){
-       temperature = toCelsius(temperature);
+       temperature = fToCelsius(temperature);
     } else if (fromScale == "K" && toScale == "C"){
         temperature = kToCelsius(temperature);
     } else if (fromScale == "K" && toScale == "F"){
